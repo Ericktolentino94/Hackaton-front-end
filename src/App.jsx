@@ -1,5 +1,5 @@
 import "./App.css";
-import { LoginPage } from "./Pages/LoginPage";
+import { LoginPage } from "./Pages/LoginPage.jsx";
 import { UserProvider } from "./Providers/UserProvider";
 import { LoggedInPage } from "./Pages/LoggedInPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
