@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getApp, initializeApp, deleteApp,  } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,7 +42,6 @@ export const signInWithGoogle = () => {
   export const logOut = async () =>{
     try {
       await signOut(auth)
-      alert("you've signed out - congrats.")
     } catch(err) {
       console.log(err)
     }

@@ -14,7 +14,7 @@ export const LoggedInPage = () => {
   
   useEffect(() => { 
     if(!user) {
-        alert("not logged in - redirecting")
+
         navigate("/");
       }
     }, [user, navigate]);
