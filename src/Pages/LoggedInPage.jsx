@@ -2,9 +2,14 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../Services/Firebase";
+import {useState} from "react"
 
 
-export const LoggedInPage = () => {
+
+
+export const LoggedInPage = ({currentUser, setCurrentUser}) => {
+  const [clearMessage, setClearMessage] = useState(false);
+
   const imgStyle = {
       width:'30vh',
       height:'30vh'
@@ -24,8 +29,15 @@ export const LoggedInPage = () => {
     logOut()
     alert("you've been logged out")
   };
-  if ( user ){
-    return (
+  const handleOk=(event) => {
+    event.preventDefault();
+    setClearMessage(true);
+  }
+  if ( user ){ setCurrentUser(user)
+    return (<>
+  <button onClick={handleOk}>
+    OK
+  </button>{!clearMessage ? 
       <div>
         <h1> YOU ARE NOW LOGGED IN : </h1>
         <h1>Welcome {user.displayName} !</h1>
@@ -37,9 +49,12 @@ export const LoggedInPage = () => {
             ></img>
         </div>
         email: {user.email}
-        <button onClick={handleLogout}> LOG OUT</button>
+       
+        
+      </div> : null}
+      <button onClick={handleLogout}> LOG OUT</button>
+      </>
 
-      </div>
     );
   } else 
   return (

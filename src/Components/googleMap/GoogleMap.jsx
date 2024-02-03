@@ -22,7 +22,7 @@ const center = {
 };
 
 
-const MapComponent = () => {
+const MapComponent = ({currentUser, setCurrentUser}) => {
   // state for the map center location
   const [mapCenter, setMapCenter] = useState(center);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -87,7 +87,7 @@ const MapComponent = () => {
        </section> */}
        
 
-      <LoadScript
+      {currentUser? <LoadScript
         googleMapsApiKey={API_KEY}
         libraries={["places"]}
         loading="async"
@@ -107,7 +107,7 @@ const MapComponent = () => {
             />
           ))}
         </GoogleMap>
-      </LoadScript>
+      </LoadScript>:null}
     </div>
   );
 };
