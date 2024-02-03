@@ -3,6 +3,8 @@ import { LoginPage } from "./Pages/LoginPage.jsx";
 import { UserProvider } from "./Providers/UserProvider";
 import { LoggedInPage } from "./Pages/LoggedInPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import  { MemoGoogleMap } from "./Components/googleMap/GoogleMap.jsx"
+
 
 function App() {
   
@@ -15,9 +17,12 @@ function App() {
             <Route  path="/" element = { <LoginPage /> } /> 
             <Route path="/loggedInPage" element = { <LoggedInPage  />} />
          </Routes>
-        </Router>
+        </Router> 
 
-      </UserProvider>
+       </UserProvider> 
+      <main>
+        <MemoGoogleMap />
+      </main>
 
     </div>
   );

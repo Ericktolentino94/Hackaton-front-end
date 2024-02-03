@@ -1,0 +1,41 @@
+ .googleMaps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:5%;
+    width:100%;
+    max-width:1280px
+ }
+ .googleMaps-ul {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 85%
+}
+    
+
+
+ .googleMaps-ul-li {
+    list-style-type: none;
+    border:2px solid rgb(38, 36, 36);
+    padding:5px 2px;
+    box-shadow: 1px 1px 1px 5px grey;
+ }
+
+ .googleMaps-form-container {
+    padding:25px;
+    border:2px solid green;
+
+    && div {
+        display:flex;
+        justify-content: space-evenly;
+    };
+    && form {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: stretch;
+    }
+ } 
