@@ -52,6 +52,7 @@ const MapComponent = () => {
     event.preventDefault();
     try {
       const { latitude, longitude } = await getUserLocation();
+      debugger
       const requestBody = {
         // grab either the event value from the button click
           // or key into the .current.value of our inputRef 
@@ -60,6 +61,7 @@ const MapComponent = () => {
         distance: searchDistance,
       };
       let res = await getGoogleMapsData(requestBody);
+      
       updateMapPositions(res.data.results);
     } catch (err) {
       console.error(err);
@@ -71,18 +73,19 @@ const MapComponent = () => {
     setPlaces(places);
     setMapCenter(places[0].latitude, places[0].longitude);
   };
-
+ 
   return (
     <div className="googleMaps-container">
-      <h1>Welcome to GRUB FINDER</h1>
-      <h2>Find Some Grub</h2>
-      <h3>{selectedPlace ? selectedPlace.name : null}</h3>
-      <section className="googleMaps-form-container">
+       {/* <h1>Welcome to GRUB FINDER</h1>
+      {mapCenter.lat}{mapCenter.lng}
+       <h2>Find Some Grub</h2>
+       <h3>{selectedPlace ? selectedPlace.name : null}</h3>
+       <section className="googleMaps-form-container">
         <Form  handleSubmit={handleSubmit} inputRef={inputRef}/>
         {places.length ? <h2>Nearby Grub:</h2> : null}
-        <MapResultList places={places}/>
-      </section>
-      {/*  LOADSCRIPT IS THE WRAPPER COMPONENT FOR OUR GOOGLE MAPS FUNCTIONALITY */}
+         <MapResultList places={places}/>
+       </section> */}
+       
 
       <LoadScript
         googleMapsApiKey={API_KEY}

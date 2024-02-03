@@ -17,9 +17,9 @@ function App() {
             <Route  path="/" element = { <LoginPage /> } /> 
             <Route path="/loggedInPage" element = { <LoggedInPage  />} />
          </Routes>
-        </Router>
+        </Router> 
 
-      </UserProvider>
+       </UserProvider> 
       <main>
         <MemoGoogleMap />
       </main>
