@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useNavigate } from "react-router-dom";
-import { signInWithGoogle, logOut } from "./Services/Firebase";
+import { signInWithGoogle, logOut } from "../Services/Firebase"
 
 export const Login = () => {
   const user = useContext(UserContext);

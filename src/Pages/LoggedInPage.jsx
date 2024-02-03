@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "./Services/Firebase";
+import { logOut } from "../Services/Firebase";
 
 
 export const LoggedInPage = () => {

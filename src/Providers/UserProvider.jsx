@@ -1,7 +1,7 @@
 //  this PROVIDER will be responsible for reutrning the
 //  functionality of our  FIREBASE SERVICE.
 import React, { useEffect, useState, createContext } from "react";
-import { auth } from "./Services/Firebase";
+import { auth } from "../Services/Firebase";
 
 
 export const UserContext = createContext(null);
