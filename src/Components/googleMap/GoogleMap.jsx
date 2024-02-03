@@ -23,16 +23,25 @@ const center = {
   lng: 74.644,
 };
 
+<<<<<<< HEAD
 
 const MapComponent = ({ currentUser, setCurrentUser }) => {
+=======
+const MapComponent = () => {
+>>>>>>> 3dc4c3b (commiting pre merge)
   // state for the map center location
   const [mapCenter, setMapCenter] = useState(center);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [places, setPlaces] = useState([]);
+<<<<<<< HEAD
   const [libraries, setLibraries] = useState(["places", 'geometry', 'drawing'])
 
 
   // Hook used to track dom state directly - removing the state from React 
+=======
+
+  // Hook used to track dom state directly - removing the state from React
+>>>>>>> 3dc4c3b (commiting pre merge)
   //  selected here so we can extend the input to google API
   const inputRef = useRef();
   // custom hook to check for broswer location data
@@ -58,8 +67,13 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
       const { latitude, longitude } = await getUserLocation();
       const requestBody = {
         // grab either the event value from the button click
+<<<<<<< HEAD
         // or key into the .current.value of our inputRef 
         query: event.target.value || inputRef.current.value || event.innerText,
+=======
+        // or key into the .current.value of our inputRef
+        query: event.target.value || inputRef.current.value,
+>>>>>>> 3dc4c3b (commiting pre merge)
         location: `${latitude},${longitude}`,
         distance: searchDistance,
       };
@@ -78,6 +92,7 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
     setMapCenter(places[0].latitude, places[0].longitude);
   };
 
+<<<<<<< HEAD
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: API_KEY,
     libraries,
@@ -151,6 +166,47 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
 
 
 
+=======
+  return (
+    <div className="googleMaps-container">
+      <h1>Welcome to GRUB FINDER</h1>
+      {mapCenter.lat}
+      {mapCenter.lng}
+      <h2>Find Some Grub</h2>
+      <h3>{selectedPlace ? selectedPlace.name : null}</h3>
+      <section className="googleMaps-form-container">
+        <Form handleSubmit={handleSubmit} inputRef={inputRef} />
+        {places.length ? <h2>Nearby Grub:</h2> : null}
+        <MapResultList places={places} />
+      </section>
+
+      {currentUser ? (
+        <LoadScript
+          googleMapsApiKey={API_KEY}
+          libraries={["places"]}
+          loading="async"
+          onLoad={() => console.log("loaded!")}
+          loadingElement={<div>Sit tight - setting maps up and stuff</div>}
+        >
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={mapCenter}
+            zoom={10}
+          >
+            {places.map((place, index) => (
+              <Marker
+                key={index}
+                position={place.geometry.location}
+                title={place.name}
+              />
+            ))}
+          </GoogleMap>
+        </LoadScript>
+      ) : null}
+    </div>
+  );
+};
+>>>>>>> 3dc4c3b (commiting pre merge)
 
 // prevents unneeded rerenders if the rest of the app changes - don't want to have this map refresh a ton
 

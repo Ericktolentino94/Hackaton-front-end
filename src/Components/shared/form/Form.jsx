@@ -1,8 +1,12 @@
 import React from "react";
 import FormControlGroup from "./FormControlGroup";
+<<<<<<< HEAD
 import Pagination from "../../Pagination"
 import { useState, useMemo } from "react";
 import "./Form.css"
+=======
+
+>>>>>>> 3dc4c3b (commiting pre merge)
 /* 
  `inputRef` prop is for extending search functionality in the future
   GoogleMaps API interacts dirrectly with DOM elements in many cases
@@ -73,6 +77,7 @@ const Form = ({ handleSubmit, inputRef }) => {
   return (
     <div className="top">
       <form onSubmit={handleSubmit}>
+<<<<<<< HEAD
         <FormControlGroup buttonList={currentTableData} handleClick={handleSubmit} />
         <Pagination
                     className="pagination-bar"
@@ -81,6 +86,12 @@ const Form = ({ handleSubmit, inputRef }) => {
                     pageSize={PageSize}
                     onPageChange={page => setCurrentPageV2(page)}
                 />
+=======
+        <FormControlGroup
+          buttonList={searchButtons}
+          handleClick={handleSubmit}
+        />
+>>>>>>> 3dc4c3b (commiting pre merge)
         <br />
         <label> </label>
         <input ref={inputRef} />
@@ -91,6 +102,9 @@ const Form = ({ handleSubmit, inputRef }) => {
 };
 
 export default Form;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 3dc4c3b (commiting pre merge)
