@@ -87,7 +87,7 @@ const MapComponent = () => {
        </section> */}
        
 
-      <LoadScript
+      {<LoadScript
         googleMapsApiKey={API_KEY}
         libraries={["places"]}
         loading="async"
@@ -107,7 +107,7 @@ const MapComponent = () => {
             />
           ))}
         </GoogleMap>
-      </LoadScript>
+      </LoadScript>}
     </div>
   );
 };
