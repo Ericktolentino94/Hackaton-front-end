@@ -1,11 +1,9 @@
-import { Login } from '../Components/Login'
+import { Login } from "../Components/Login";
 
-export const LoginPage = ({currentUser, setCurrentUser}) => {
-
-    return (
-        <div>
-           <Login currentUser={currentUser}
-                    setCurrentUser={setCurrentUser} /> 
-        </div>
-    )
-}
+export const LoginPage = () => {
+  return (
+    <div>
+      <Login />
+    </div>
+  );
+};
