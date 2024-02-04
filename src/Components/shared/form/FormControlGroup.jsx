@@ -4,7 +4,7 @@ const FormControlGroup = ({handleClick, buttonList}) => {
     return (
         <div>
             {buttonList.map((option, index) => (
-            <button key={index} value={option} onClick={(e) => handleClick(e)}>
+            <button className="btn btn-secondary btn-sm" key={index} value={option} onClick={(e) => handleClick(e)}>
               {" "}
               {option}
               {" "}

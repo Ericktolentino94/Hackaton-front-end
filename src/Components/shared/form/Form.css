@@ -1,0 +1,22 @@
+.pagitation-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.top{
+    /* width:100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fixed{
+    /* width:100%; */
+}
+
+button[clicked]{
+    color:red;
+}

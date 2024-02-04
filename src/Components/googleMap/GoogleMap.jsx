@@ -8,12 +8,14 @@ import { getGoogleMapsData } from "../../utils/apiUtils";
 import "./googleMap.css";
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-const searchDistance = 1500;
+const searchDistance = 20500;
 
 const containerStyle = {
   width: "650px",
   height: "650px",
-  border: "2px solid green",
+  border: "2px solid brown",
+  "marginTop": "20px",
+  "borderRadius": "10px"
 };
 
 const center = {
@@ -54,10 +56,11 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
     event.preventDefault();
     try {
       const { latitude, longitude } = await getUserLocation();
+      console.log(event, latitude. longitude)
       const requestBody = {
         // grab either the event value from the button click
         // or key into the .current.value of our inputRef 
-        query: event.target.value || inputRef.current.value,
+        query: event.target.value || inputRef.current.value || event.innerText,
         location: `${latitude},${longitude}`,
         distance: searchDistance,
       };
@@ -65,6 +68,7 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
 
       updateMapPositions(res.data.results);
     } catch (err) {
+      alert("your query does not match any within the search radius")
       console.error(err);
     }
   };
@@ -95,12 +99,12 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
         <h3 className="test">{selectedPlace ? selectedPlace.name : null}</h3>
         <section className="googleMaps-form-container">
           <Form handleSubmit={handleSubmit} inputRef={inputRef} />
-          {places.length ? <h2>Nearby Grub:</h2> : null}
+          {places.length ? <h2>Nearby Places:</h2> : null}
           <MapResultList places={places} />
         </section>
       </div>
 
-      <div className="map">
+      <div className="top">
         {!isLoaded ?
           <LoadScript
             googleMapsApiKey={API_KEY}
