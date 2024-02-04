@@ -19,9 +19,10 @@ function App() {
       <UserProvider>
         <Router>
 
-          <NavBar currentUser={currentUser}
-            setCurrentUser={setCurrentUser} />
-
+          <div>
+            <NavBar currentUser={currentUser}
+              setCurrentUser={setCurrentUser} />
+          </div>
 
           <Routes>
 

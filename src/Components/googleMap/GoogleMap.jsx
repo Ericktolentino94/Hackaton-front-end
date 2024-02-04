@@ -11,8 +11,8 @@ const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const searchDistance = 1500;
 
 const containerStyle = {
-  width: "600px",
-  height: "600px",
+  width: "650px",
+  height: "650px",
   border: "2px solid green",
 };
 
@@ -90,23 +90,39 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
 
   return (
     <div className="googleMaps-container">
-      <h1>Welcome to GRUB FINDER</h1>
-      <h2>Find Some Grub</h2>
-      <h3>{selectedPlace ? selectedPlace.name : null}</h3>
-      <section className="googleMaps-form-container">
-        <Form handleSubmit={handleSubmit} inputRef={inputRef} />
-        {places.length ? <h2>Nearby Grub:</h2> : null}
-        <MapResultList places={places} />
-      </section>
+      <div className="title">
+        <h1>Search by category or type in your query</h1>
+        <h3 className="test">{selectedPlace ? selectedPlace.name : null}</h3>
+        <section className="googleMaps-form-container">
+          <Form handleSubmit={handleSubmit} inputRef={inputRef} />
+          {places.length ? <h2>Nearby Grub:</h2> : null}
+          <MapResultList places={places} />
+        </section>
+      </div>
 
-      {!isLoaded ?
-        <LoadScript
-          googleMapsApiKey={API_KEY}
-          libraries={libraries}
-          loading="async"
-          onLoad={() => console.log("loaded!")}
-          loadingElement={<div>Sit tight - setting maps up and stuff</div>}
-        >
+      <div className="map">
+        {!isLoaded ?
+          <LoadScript
+            googleMapsApiKey={API_KEY}
+            libraries={libraries}
+            loading="async"
+            onLoad={() => console.log("loaded!")}
+            loadingElement={<div>Sit tight - setting maps up and stuff</div>}
+          >
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={mapCenter}
+              zoom={10}
+            >
+              {places.map((place, index) => (
+                <Marker
+                  key={index}
+                  position={place.geometry.location}
+                  title={place.name}
+                />
+              ))}
+            </GoogleMap>
+          </LoadScript> :
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={mapCenter}
@@ -120,25 +136,8 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
               />
             ))}
           </GoogleMap>
-        </LoadScript> :
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={mapCenter}
-          zoom={10}
-        >
-
-          {places.map((place, index) => (
-            <Marker
-              key={index}
-              position={place.geometry.location}
-              title={place.name}
-            />
-          ))}
-
-
-        </GoogleMap>
-
-      }
+        }
+      </div>
 
     </div>
   );

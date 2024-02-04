@@ -1,5 +1,4 @@
 .navbar {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     overflow: hidden;
     position: fixed;
@@ -7,6 +6,8 @@
     width: 100%;
     left: 0;
     height: 80px;
+    font-size: 30px;
+    
 }
 
 .navbar a {
@@ -17,6 +18,10 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: larger;
+}
+
+.inner{
+    justify-content:space-evenly;
 }
 
 .navbar a:hover {

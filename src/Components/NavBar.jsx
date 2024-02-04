@@ -6,7 +6,7 @@ export default function NavBar() {
         <div className="navbar" >
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
                 <div className="container-fluid">
-                    <div>
+                    <div >
                         <Link to="/loggedInPage">User </Link>
 
                         {/* <Link to="/loggedInPage"> Snacks </Link> */}
@@ -15,7 +15,7 @@ export default function NavBar() {
 
                     </div>
                     <span className="navbar-text">
-                        Test Maps
+                        Fast Food Location Finder
                     </span>
                 </div>
             </nav>
