@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [currentUserPlaces, setCurrentUserPlaces] = useState(null);
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -33,6 +34,8 @@ function App() {
                   element={LoginPage}
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
+                  currentUserPlaces={currentUser}Places
+                  setCurrentUserPlaces={setCurrentUserPlaces}
                 />
               }
             />
@@ -45,6 +48,8 @@ function App() {
                   element={LoggedInPage}
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
+                  currentUserPlaces={currentUser}Places
+                  setCurrentUserPlaces={setCurrentUserPlaces}
                 />
               }
             />
@@ -57,6 +62,8 @@ function App() {
                   element={MemoGoogleMap}
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
+                  currentUserPlaces={currentUser}Places
+                  setCurrentUserPlaces={setCurrentUserPlaces}
                 />
               }
             />

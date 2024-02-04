@@ -34,6 +34,9 @@ export const LoggedInPage = ({ currentUser, setCurrentUser }) => {
     navigate("/maps")
   }
   if (user) {
+
+    
+
     return (
       <div className="logged-in">
         {!clearMessage ?
