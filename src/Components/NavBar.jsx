@@ -9,9 +9,9 @@ export default function NavBar() {
                     <div >
                         <Link to="/loggedInPage">User </Link>
 
-                        {/* <Link to="/loggedInPage"> Snacks </Link> */}
-
                         <Link to="/maps"> Maps </Link>
+
+                        <Link to="/places"> Saved Places </Link>
 
                     </div>
                     <span className="navbar-text">

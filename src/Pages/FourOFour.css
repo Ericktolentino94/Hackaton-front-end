@@ -1,0 +1,8 @@
+.fourOfour-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 35px;
+}

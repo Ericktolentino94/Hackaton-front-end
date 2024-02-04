@@ -7,7 +7,10 @@ import "./LoggedInpage.css"
 import "animate.css"
 
 
-export const LoggedInPage = ({ currentUser, setCurrentUser }) => {
+export const LoggedInPage = ({ currentUser, 
+  setCurrentUser,
+currentUserPlaces,
+setCurrentUserPlaces }) => {
   const [clearMessage, setClearMessage] = useState(false);
 
   const imgStyle = {

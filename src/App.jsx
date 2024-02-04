@@ -8,6 +8,8 @@ import { useState } from "react";
 import ProtectedRoute from "./Components/ProtectedRoute"
 import PublicRoute from "./Components/PublicRoute"
 import NavBar from "./Components/NavBar"
+import UnderConstruction from "./Pages/UnderConstruction"
+import FourOFour from "./Pages/FourOFour"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -67,6 +69,32 @@ function App() {
                 />
               }
             />
+
+            {/* private route - home screen of specific user */}
+            <Route
+              path="/places"
+              element={
+                <ProtectedRoute
+                  element={UnderConstruction}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                  currentUserPlaces={currentUser}Places
+                  setCurrentUserPlaces={setCurrentUserPlaces}
+                />
+              }
+            />
+
+            {/* public route - page not found */}
+            <Route
+                path="*"
+                element={
+                  <PublicRoute
+                    element={FourOFour}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                  />
+                }
+              />
 
 
           </Routes>

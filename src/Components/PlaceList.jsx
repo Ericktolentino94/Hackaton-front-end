@@ -1,8 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table"
-import Place from "../../Components/Place"
+import Place from "./Place"
 import { useState, useMemo } from "react";
-import Pagination from "../Pagination";
+import Pagination from "./Pagination";
 
 const PlaceList = ({ currentUser, currentUserPlaces }) => {
     //const [items, setItems] = useState(places)
