@@ -13,9 +13,7 @@
     text-align: center;
 }
 
-.fixed{
-    /* width:100%; */
-}
+
 
 button[clicked]{
     color:red;

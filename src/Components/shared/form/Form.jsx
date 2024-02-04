@@ -56,7 +56,10 @@ const Form = ({ handleSubmit, inputRef }) => {
   "Wendy's",
   "White Castle",
   "Wingstop",
-  "WingStreet"
+  "WingStreet",
+  "Bodega",
+  "Deli",
+  "Whole Foods"
 ])
 
   let PageSize = 5

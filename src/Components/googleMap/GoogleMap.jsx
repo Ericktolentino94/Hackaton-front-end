@@ -56,7 +56,6 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
     event.preventDefault();
     try {
       const { latitude, longitude } = await getUserLocation();
-      console.log(event, latitude. longitude)
       const requestBody = {
         // grab either the event value from the button click
         // or key into the .current.value of our inputRef 
