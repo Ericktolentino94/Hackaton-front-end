@@ -4,8 +4,8 @@ const MapResultList = ({ places }) => {
   return (
     <div>
       <ul className="googleMaps-ul">
-        {places.map((place) => (
-          <li className="googleMaps-ul-li" key={place.index}>
+        {places.map((place,i) => (
+          <li className="googleMaps-ul-li" key={`${place}+${i}`}>
             {place.name}
           </li>
         ))}

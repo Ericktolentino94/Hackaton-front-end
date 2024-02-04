@@ -3,11 +3,12 @@ import { UserContext } from "../Providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle, logOut } from "../Services/Firebase"
 
-export const Login = () => {
+export const Login = ({currentUser, setCurrentUser}) => {
   const user = useContext(UserContext);
   const navigate  = useNavigate();
   useEffect(() => {
     if (user) {
+      setCurrentUser(user)
       navigate("/loggedInPage");
     }
   }, [user, navigate]);

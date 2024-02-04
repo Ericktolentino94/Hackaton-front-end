@@ -1,0 +1,29 @@
+.navbar {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    overflow: hidden;
+    position: fixed;
+    top: -4px;
+    width: 100%;
+    left: 0;
+    height: 80px;
+}
+
+.navbar a {
+    float: left;
+    display: flex;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.navbar a:hover {
+    background: #3a4664;
+    color: #f2f2f2;
+}
+
+.navbar-text {
+    font-size: 20px;
+}

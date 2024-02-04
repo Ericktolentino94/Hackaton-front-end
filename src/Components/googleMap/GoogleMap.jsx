@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Form from "../shared/form/Form";
 import MapResultList from "./MapResultList";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, useLoadScript } from "@react-google-maps/api";
 import { useUserLocation } from "../../hooks/useUserLocation";
 import { getUserLocation } from "../../utils/locationUtils";
 import { getGoogleMapsData } from "../../utils/apiUtils";
@@ -22,12 +22,14 @@ const center = {
 };
 
 
-const MapComponent = ({currentUser, setCurrentUser}) => {
+const MapComponent = ({ currentUser, setCurrentUser }) => {
   // state for the map center location
   const [mapCenter, setMapCenter] = useState(center);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [places, setPlaces] = useState([]);
- 
+  const [libraries, setLibraries] = useState(["places", 'geometry', 'drawing'])
+
+
   // Hook used to track dom state directly - removing the state from React 
   //  selected here so we can extend the input to google API
   const inputRef = useRef();
@@ -52,16 +54,15 @@ const MapComponent = ({currentUser, setCurrentUser}) => {
     event.preventDefault();
     try {
       const { latitude, longitude } = await getUserLocation();
-      debugger
       const requestBody = {
         // grab either the event value from the button click
-          // or key into the .current.value of our inputRef 
+        // or key into the .current.value of our inputRef 
         query: event.target.value || inputRef.current.value,
         location: `${latitude},${longitude}`,
         distance: searchDistance,
       };
       let res = await getGoogleMapsData(requestBody);
-      
+
       updateMapPositions(res.data.results);
     } catch (err) {
       console.error(err);
@@ -73,32 +74,59 @@ const MapComponent = ({currentUser, setCurrentUser}) => {
     setPlaces(places);
     setMapCenter(places[0].latitude, places[0].longitude);
   };
- 
+
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: API_KEY,
+    libraries,
+  });
+
+  if (loadError) {
+    return <div>Error loading maps</div>;
+  }
+
+  if (!isLoaded) {
+    return <h1>Loading maps</h1>;
+  }
+
   return (
     <div className="googleMaps-container">
-       {/* <h1>Welcome to GRUB FINDER</h1>
-      {mapCenter.lat}{mapCenter.lng}
-       <h2>Find Some Grub</h2>
-       <h3>{selectedPlace ? selectedPlace.name : null}</h3>
-       <section className="googleMaps-form-container">
-        <Form  handleSubmit={handleSubmit} inputRef={inputRef}/>
+      <h1>Welcome to GRUB FINDER</h1>
+      <h2>Find Some Grub</h2>
+      <h3>{selectedPlace ? selectedPlace.name : null}</h3>
+      <section className="googleMaps-form-container">
+        <Form handleSubmit={handleSubmit} inputRef={inputRef} />
         {places.length ? <h2>Nearby Grub:</h2> : null}
-         <MapResultList places={places}/>
-       </section> */}
-       
+        <MapResultList places={places} />
+      </section>
 
-      {currentUser? <LoadScript
-        googleMapsApiKey={API_KEY}
-        libraries={["places"]}
-        loading="async"
-        onLoad={() => console.log("loaded!")}
-        loadingElement={<div>Sit tight - setting maps up and stuff</div>}
-      >
+      {!isLoaded ?
+        <LoadScript
+          googleMapsApiKey={API_KEY}
+          libraries={libraries}
+          loading="async"
+          onLoad={() => console.log("loaded!")}
+          loadingElement={<div>Sit tight - setting maps up and stuff</div>}
+        >
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={mapCenter}
+            zoom={10}
+          >
+            {places.map((place, index) => (
+              <Marker
+                key={index}
+                position={place.geometry.location}
+                title={place.name}
+              />
+            ))}
+          </GoogleMap>
+        </LoadScript> :
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={mapCenter}
           zoom={10}
         >
+
           {places.map((place, index) => (
             <Marker
               key={index}
@@ -106,14 +134,18 @@ const MapComponent = ({currentUser, setCurrentUser}) => {
               title={place.name}
             />
           ))}
+
+
         </GoogleMap>
-      </LoadScript>:null}
+
+      }
+
     </div>
   );
 };
-  
 
-      
+
+
 
 
 

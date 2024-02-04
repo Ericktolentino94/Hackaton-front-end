@@ -1,10 +1,11 @@
 import { Login } from '../Components/Login'
 
-export const LoginPage = () => {
+export const LoginPage = ({currentUser, setCurrentUser}) => {
 
     return (
         <div>
-           <Login /> 
+           <Login currentUser={currentUser}
+                    setCurrentUser={setCurrentUser} /> 
         </div>
     )
 }

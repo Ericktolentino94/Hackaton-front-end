@@ -19,7 +19,7 @@ export const LoggedInPage = ({currentUser, setCurrentUser}) => {
   
   useEffect(() => { 
     if(!user) {
-
+        setCurrentUser(null)
         navigate("/");
       }
     }, [user, navigate]);
@@ -31,9 +31,9 @@ export const LoggedInPage = ({currentUser, setCurrentUser}) => {
   };
   const handleOk=(event) => {
     event.preventDefault();
-    setClearMessage(true);
+    navigate("/maps")
   }
-  if ( user ){ setCurrentUser(user)
+  if ( user ){ 
     return (<>
   <button onClick={handleOk}>
     OK
