@@ -82,7 +82,7 @@ const Form = ({ handleSubmit, inputRef }) => {
                     onPageChange={page => setCurrentPageV2(page)}
                 />
         <br />
-        <label>Or find Some Food By Name</label>
+        <label> </label>
         <input ref={inputRef} />
         <button className="btn btn-dark btn-md fixed" type="submit">Search</button>
       </form>

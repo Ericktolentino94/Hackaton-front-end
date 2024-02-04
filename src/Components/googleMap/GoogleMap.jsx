@@ -95,7 +95,7 @@ const MapComponent = ({ currentUser, setCurrentUser }) => {
     <div className="googleMaps-container">
       <div className="title">
         <h1>Search by category or type in your query</h1>
-        <h3 className="test">{selectedPlace ? selectedPlace.name : null}</h3>
+        <h3 className="test">{places.length>0 ? `Found Establishments: ${places.length}` : null}</h3>
         <section className="googleMaps-form-container">
           <Form handleSubmit={handleSubmit} inputRef={inputRef} />
           {places.length ? <h2>Nearby Places:</h2> : null}

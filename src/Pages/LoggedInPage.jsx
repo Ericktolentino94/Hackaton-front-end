@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../Services/Firebase";
 import { useState } from "react"
 import "./LoggedInpage.css"
-
+import "animate.css"
 
 
 export const LoggedInPage = ({ currentUser, setCurrentUser }) => {
@@ -37,7 +37,7 @@ export const LoggedInPage = ({ currentUser, setCurrentUser }) => {
     return (
       <div className="logged-in">
         {!clearMessage ?
-          <div>
+          <div className="animate__animated animate__fadeInDown">
             <h1> YOU ARE NOW LOGGED IN : </h1>
             <h1>Welcome {user.displayName} !</h1>
             <div className="image">
@@ -48,14 +48,14 @@ export const LoggedInPage = ({ currentUser, setCurrentUser }) => {
               ></img>
             </div>
             <div className="email">
-              email: {user.email}
+              Email: {user.email}
             </div>
             <br></br>
             <button className="btn btn-dark btn-lg" onClick={handleLogout}>
-              LOG OUT
+              Log Out
             </button>
             <button className="btn btn-dark btn-lg" onClick={handleOk}>
-              OK
+              Browse Site
             </button>
           </div> : null}
 
